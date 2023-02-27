@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuaca</title>
+    <link href="/dist/output.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<style>
+    .shadow-text{
+        text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);;
+    }
+    .glass{
+        background: linear-gradient(171.36deg, rgba(217, 217, 217, 0.3) 0.35%, #D9D9D9 101.46%);
+        box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(5px)
+    }
+    .glass2{
+        background: linear-gradient(93.33deg, rgba(255, 255, 255, 0.05) -2.14%, rgba(255, 255, 255, 0.04) -2.13%, rgba(255, 255, 255, 0.01) 98.92%);
+        box-shadow: 0px 2px 10px -1px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px)
+    }
+</style>
+<body class="">
+    <section class="relative flex">
+        <div style="background-image: url(./assets/awan.png); background-size: cover;" class="h-screen blur-sm fixed w-screen"></div>
+        <div class="container mx-auto lg:grid grid-cols-12 absolute top-0">
+
+            <!-- Side bar -->
+
+            <div class="max-w-[500px] sm:mx-auto lg:col-span-3 glass px-6 h-screen pt-20 overflow-y-scroll">
+                <form class="flex items-center justify-between border rounded-full p-1" action="">
+                    <input class="bg-transparent shadow-text outline-none w-full px-2 text-white placeholder-white font-Poppins" type="search" name="searchLocation" id="searchLocation" placeholder="Search Location">
+                    <iconify-icon class="text-white text-2xl" icon="mingcute:search-line"></iconify-icon>
+                </form>
+                <div class="mt-16">
+                    <div class="flex">
+                        <h1 id="temp" class="text-white text-8xl shadow-text font-Poppins"></h1><span class="text-4xl text-white shadow-text leading-none">℃</span>
+                    </div>
+                    <p id="region" class="text-xl text-white shadow-text font-Poppins"></p>
+                </div>
+                <canvas class="w-full mt-0" id="myCanvas"></canvas>
+
+                <!-- info cuaca daerah -->
+
+                <div class="grid grid-cols-12 gap-3 mt-12">
+                    <div class="col-span-8">
+                        <div class="border wd border-white rounded-xl p-3 overflow-hidden">
+                            <div class="flex items-center">
+                                <img class="w-[60px]" src="" alt="">
+                               <div class="flex">
+                                    <h1 class="text-2xl text-slate-500 font-Poppins"></h1>
+                                    <span class="text-sm text-slate-500 shadow-text leading-4">℃</span>
+                               </div>
+                            </div>
+                            <div class="overflow-hidden"><span class="block text-slate-500 font-Poppins w-screen"></span></div>
+                           
+                            <table class="border-separate">
+                                <tr class="border-collapse">
+                                    <td class="border-collapse text-xs font-Poppins text-slate-500">Kelembapan</td>
+                                    <td class="border-collapse pl-10 text-xs font-Poppins text-slate-500"></td>
+                                </tr>
+                                <tr class="border-collapse">
+                                    <td class="border-collapse text-xs font-Poppins text-slate-500">Kec Angin</td>
+                                    <td class="border-collapse pl-10 text-xs font-Poppins text-slate-500"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-span-4">
+                        <div class="gird grid-cols-2">
+                            <div class="border cuacaDaerah col-span-1 border-white rounded-xl p-2">
+                                <div class="flex items-center gap-1">
+                                    <img src="" alt="" class="w-[60%]">
+                                    <div class="flex">
+                                        <div class="flex items-center">
+                                            <h1 class="text-base text-slate-500 font-Poppins"></h1>
+                                            <span class="block text-base text-slate-500 font-Poppins">℃</span>
+                                        </div>
+                                        <span class="text-sm text-slate-500 shadow-text leading-4"></span>
+                                   </div>
+                                </div>
+                                <div class="overflow-hidden"><span class="w-screen block text-slate-500 font-Poppins text-[13px]"></span></div>
+                            </div>
+                            <div class="border cuacaDaerah col-span-1 mt-2 border-white rounded-xl p-2">
+                                <div class="flex items-center gap-1">
+                                    <img src="" alt="" class="w-[60%]">
+                                    <div class="flex">
+                                        <div class="flex items-center">
+                                            <h1 class="text-base text-slate-500 font-Poppins"></h1>
+                                            <span class="block text-base text-slate-500 font-Poppins">℃</span>
+                                        </div>
+                                        <span class="text-sm text-slate-500 shadow-text leading-4"></span>
+                                   </div>
+                                </div>
+                                <div class="overflow-hidden"><span class="w-screen block text-slate-500 font-Poppins text-[13px]"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-3 gap-3 mt-3 mb-5">
+                    <div class="border cuacaDaerah col-span-1 border-white rounded-xl p-2">
+                        <div class="flex items-center gap-1">
+                            <img src="" alt="" class="w-[60%]">
+                            <div class="flex">
+                                <div class="flex items-center">
+                            <h1 class="text-base text-slate-500 font-Poppins"></h1>
+                            <span class="block text-base text-slate-500 font-Poppins">℃</span>
+                                </div>
+                                <span class="text-sm text-slate-500 shadow-text leading-4"></span>
+                           </div>
+                        </div>
+                        <div class="overflow-hidden"><span class="w-screen block text-slate-500 font-Poppins text-[13px]"></span></div>
+                    </div>
+                    <div class="border cuacaDaerah col-span-1 border-white rounded-xl p-2">
+                        <div class="flex items-center gap-1">
+                            <img src="" alt="" class="w-[60%]">
+                            <div class="flex">
+                                <div class="flex items-center">
+                            <h1 class="text-base text-slate-500 font-Poppins"></h1>
+                            <span class="block text-base text-slate-500 font-Poppins">℃</span>
+                                </div>
+                                <span class="text-sm text-slate-500 shadow-text leading-4"></span>
+                           </div>
+                        </div>
+                        <div class="overflow-hidden"><span class="w-screen block text-slate-500 font-Poppins text-[13px]"></span></div>
+                    </div>
+                    <div class="border cuacaDaerah col-span-1 border-white rounded-xl p-2">
+                        <div class="flex items-center gap-1">
+                            <img src="" alt="" class="w-[60%]">
+                            <div class="flex">
+                                <div class="flex items-center">
+                            <h1 class="text-base text-slate-500 font-Poppins"></h1>
+                            <span class="block text-base text-slate-500 font-Poppins">℃</span>
+                                </div>
+                                <span class="text-sm text-slate-500 shadow-text leading-4"></span>
+                           </div>
+                        </div>
+                        <div class="overflow-hidden"><span class="w-screen block text-slate-500 font-Poppins text-[13px]"></span></div>
+                    </div>
+                </div>
+
+                <!-- info cuaca daerah End -->
+
+            </div>
+
+            <!-- side bar end -->
+
+            <div  id="infoHome" class="lg:col-span-9 lg:px-7 xl:px-10 2xl:px-20 w-full h-screen hidden lg:block overflow-y-scroll">
+                <img class="mt-36 w-[15%]" src="./assets/awan_cerah.svg" alt="">
+                <span class="block text-8xl font-Poppins text-white shadow-text">Cerah Berawan</span>
+                <div class="grid grid-cols-3 gap-7 mt-10 w-full">
+                    <div class="glass2 rounded-xl p-6">
+                        <span class="block text-xl font-Poppins text-slate-500 mb-2">Temperatur</span>
+                        <div class="flex">
+                            <span class="block text-white shadow-text text-6xl font-Poppins">29</span>
+                            <span class="text-4xl text-white shadow-text leading-none">℃</span>
+                        </div>
+                    </div>
+                    <div class="glass2 rounded-xl p-6">
+                        <span class="block text-xl font-Poppins text-slate-500 mb-2">Temperatur Min</span>
+                        <div class="flex">
+                            <span class="block text-white shadow-text text-6xl font-Poppins">31</span>
+                            <span class="text-4xl text-white shadow-text leading-none">℃</span>
+                        </div>
+                    </div>
+                    <div class="glass2 rounded-xl p-6">
+                        <span class="block text-xl font-Poppins text-slate-500 mb-2">Temperatur Maks</span>
+                        <div class="flex">
+                            <span class="block text-white shadow-text text-6xl font-Poppins">30</span>
+                            <span class="text-4xl text-white shadow-text leading-none">℃</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-3 gap-7 mt-7 w-full">
+                    <div class="glass2 rounded-xl p-6">
+                        <span class="block text-xl font-Poppins text-slate-500 mb-2">Kelembapan</span>
+                        <div class="flex items-center">
+                            <span class="block text-white shadow-text text-6xl font-Poppins">90</span>
+                            <span class="block text-white shadow-text text-6xl font-Poppins">%</span>
+                        </div>
+                    </div>
+                    <div class="glass2 rounded-xl p-6">
+                        <span class="block text-xl font-Poppins text-slate-500 mb-2">Kelembapan Min</span>
+                        <div class="flex items-center">
+                            <span class="block text-white shadow-text text-6xl font-Poppins">90</span>
+                            <span class="block text-white shadow-text text-6xl font-Poppins">%</span>
+                        </div>
+                    </div>
+                    <div class="glass2 rounded-xl p-6">
+                        <span class="block text-xl font-Poppins text-slate-500 mb-2">Kelembapan Maks</span>
+                        <div class="flex items-center">
+                            <span class="block text-white shadow-text text-6xl font-Poppins">90</span>
+                            <span class="block text-white shadow-text text-6xl font-Poppins">%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<script type="module" src="./script.js"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
+</body>
+</html>
